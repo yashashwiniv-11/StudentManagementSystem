@@ -14,12 +14,14 @@ public class Main {
             System.out.println("3. Search Student");
             System.out.println("4. Delete Student");
             System.out.println("5. Update Marks");
-            System.out.println("6. Exit");
+            System.out.println("6. Show Topper");
+            System.out.println("7. Exit");
             System.out.print("Choose option: ");
 
             int choice = sc.nextInt();
             sc.nextLine();
 
+            // ADD
             if (choice == 1) {
                 System.out.print("Enter name: ");
                 String name = sc.nextLine();
@@ -31,16 +33,18 @@ public class Main {
                 System.out.println("Student Added!");
             }
 
+            // DISPLAY
             else if (choice == 2) {
                 if (students.isEmpty()) {
                     System.out.println("No students available!");
                 } else {
                     for (Student s : students) {
-                        System.out.println(s);
+                        System.out.println(s + " | Grade: " + s.getGrade());
                     }
                 }
             }
 
+            // SEARCH
             else if (choice == 3) {
                 System.out.print("Enter name to search: ");
                 String searchName = sc.nextLine();
@@ -59,6 +63,7 @@ public class Main {
                 }
             }
 
+            // DELETE
             else if (choice == 4) {
                 System.out.print("Enter name to delete: ");
                 String deleteName = sc.nextLine();
@@ -78,6 +83,7 @@ public class Main {
                 }
             }
 
+            // UPDATE
             else if (choice == 5) {
                 System.out.print("Enter name to update: ");
                 String updateName = sc.nextLine();
@@ -99,7 +105,25 @@ public class Main {
                 }
             }
 
+            // TOPPER
             else if (choice == 6) {
+                if (students.isEmpty()) {
+                    System.out.println("No students available!");
+                } else {
+                    Student topper = students.get(0);
+
+                    for (Student s : students) {
+                        if (s.getMarks() > topper.getMarks()) {
+                            topper = s;
+                        }
+                    }
+
+                    System.out.println("Topper: " + topper + " | Grade: " + topper.getGrade());
+                }
+            }
+
+            // EXIT
+            else if (choice == 7) {
                 System.out.println("Exiting...");
                 break;
             }
