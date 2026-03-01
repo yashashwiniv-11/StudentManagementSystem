@@ -1,4 +1,5 @@
 public class Student {
+
     private String name;
     private int marks;
 
@@ -19,13 +20,15 @@ public class Student {
         this.marks = marks;
     }
 
+    public String getGrade() {
+        if (marks >= 90) return "A";
+        else if (marks >= 75) return "B";
+        else if (marks >= 50) return "C";
+        else return "Fail";
+    }
+
+    @Override
     public String toString() {
         return "Name: " + name + ", Marks: " + marks;
-    }
-    public String getGrade() {
-    if (marks >= 90) return "A";
-    else if (marks >= 75) return "B";
-    else if (marks >= 50) return "C";
-    else return "Fail";
     }
 }
